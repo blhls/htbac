@@ -1,0 +1,31 @@
+:root {
+    --violet: #4a004a;
+    --burgundy: #800020;
+    --duckblue: #004b49;
+}
+
+body, html { margin: 0; padding: 0; font-family: 'Courier New', monospace; overflow: hidden; }
+
+/* Layout */
+.app-layout { display: flex; height: 100vh; pt: 40px; } /* pt for banner */
+.sidebar { width: 250px; background: #222; color: white; transition: 0.3s; }
+.sidebar.collapsed { width: 50px; }
+.sidebar.collapsed .nav-links { display: none; }
+.middle-row { width: 300px; border-right: 1px solid #ccc; overflow-y: auto; }
+.content-view { flex-grow: 1; padding: 20px; overflow-y: auto; }
+
+/* Banner */
+.scrolling-banner {
+    position: fixed; top: 0; width: 100%; background: yellow; color: black;
+    white-space: nowrap; overflow: hidden;
+}
+.banner-text { display: inline-block; animation: scroll 20s linear infinite; }
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Themes */
+.theme-french { background-color: var(--burgundy); color: white; }
+.theme-inbox { background-color: var(--violet); color: white; }
