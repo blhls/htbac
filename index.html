@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>howtobecomeacrab.com</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-default">
+
+    <section id="screen-login" class="screen">
+        <div class="login-content">
+            <img src="your-cool-crab.gif" alt="Crab" class="login-gif">
+            <h1>howtobecomeacrab.com</h1>
+            <p>Informations, memes, and chitinous thoughts.</p>
+            
+            <button id="break-button">CHECK MY CRABS</button>
+            
+            <button id="french-bypass" class="bypass">
+                CRABE MA TUER<br><span>chitine française</span>
+            </button>
+        </div>
+    </section>
+
+    <section id="screen-loading" class="screen" style="display:none;">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p id="loading-text">Calibrating pincers...</p>
+            <div class="ad-space">AD: New article on Patriarchy coming soon!</div>
+        </div>
+    </section>
+
+    <section id="screen-app" class="screen" style="display:none;">
+        <div class="scrolling-banner">
+            <div class="banner-text">LATEST NEWS: CRAB EVOLUTION ACCELERATING -- STAY PROTECTED -- MOULT REGULARLY -- </div>
+        </div>
+
+        <div class="app-layout">
+            <aside id="sidebar" class="sidebar collapsed">
+                <div id="sidebar-toggle" class="outcrab-label">OUTCRAB</div>
+                <nav class="nav-links">
+                    <div class="nav-item" onclick="changeSection('french')">🇫🇷 FRENCH NEWS</div>
+                    <div class="nav-item" onclick="changeSection('inbox')">📥 INBOX</div>
+                    <div class="nav-sub">
+                        <div onclick="filterCategory('patriarchy')">↳ Patriarchy</div>
+                        <div onclick="filterCategory('imperialism')">↳ Imperialism</div>
+                        <div onclick="filterCategory('capitalism')">↳ Capitalism</div>
+                        <div onclick="filterCategory('notes')">↳ Notes to self</div>
+                    </div>
+                    <div class="nav-item" onclick="changeSection('sent')">📤 SENT</div>
+                    <div class="nav-item" onclick="changeSection('drafts')">📝 DRAFTS</div>
+                    <div class="nav-item" onclick="changeSection('shell')">🐚 YOUR SHELL</div>
+                    <div class="nav-item moult" onclick="moult()">🧪 MOULT</div>
+                </nav>
+            </aside>
+
+            <section class="middle-row" id="email-list">
+                </section>
+
+            <main class="content-view" id="content-view">
+                </main>
+        </div>
+    </section>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
