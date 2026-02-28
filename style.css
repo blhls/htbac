@@ -6,98 +6,55 @@
     --text-light: #eee;
 }
 
-/* Base Reset */
-body, html { 
-    margin: 0; 
-    padding: 0; 
-    font-family: 'Courier New', Courier, monospace; 
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    overflow: hidden; /* Prevents whole page from scrolling */
-}
+body, html { margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; background-color: var(--bg-dark); color: var(--text-light); overflow: hidden; }
 
-/* Screens */
 .screen { height: 100vh; width: 100vw; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-#screen-app { display: block; } /* Overrides the flex centering for the app */
-
-/* Login & Loading */
+#screen-app { display: block; }
 .login-content, .loader-content { text-align: center; }
-button { 
-    padding: 15px 30px; margin: 10px; font-family: inherit; font-weight: bold;
-    background: var(--duckblue); color: white; border: none; cursor: pointer; transition: 0.2s;
-}
+button { padding: 15px 30px; margin: 10px; font-family: inherit; font-weight: bold; background: var(--duckblue); color: white; border: none; cursor: pointer; transition: 0.2s; }
 button:hover { background: #007b78; }
 .bypass { background: transparent; border: 1px solid var(--burgundy); color: var(--burgundy); }
 
-/* Banner */
-.scrolling-banner {
-    position: fixed; top: 0; width: 100%; height: 30px; line-height: 30px;
-    background: yellow; color: black; white-space: nowrap; overflow: hidden; z-index: 100;
-}
+.scrolling-banner { position: fixed; top: 0; width: 100%; height: 30px; line-height: 30px; background: yellow; color: black; white-space: nowrap; overflow: hidden; z-index: 100; }
 .banner-text { display: inline-block; animation: scroll 20s linear infinite; font-weight: bold; }
-@keyframes scroll {
-    0% { transform: translateX(100vw); }
-    100% { transform: translateX(-100%); }
-}
+@keyframes scroll { 0% { transform: translateX(100vw); } 100% { transform: translateX(-100%); } }
 
-/* --- THE MAILBOX LAYOUT --- */
-.app-layout { 
-    display: flex; 
-    height: 100vh; 
-    padding-top: 30px; /* FIXED TYPO! Leaves room for the banner */
-    box-sizing: border-box;
-}
+.app-layout { display: flex; height: 100vh; padding-top: 30px; box-sizing: border-box; }
 
-/* 1. Sidebar (Left Column) */
-.sidebar { 
-    width: 250px; 
-    background: #000; 
-    border-right: 2px solid #333;
-    transition: width 0.3s; 
-    display: flex;
-    flex-direction: column;
-}
-.sidebar.collapsed { width: 60px; }
+/* Sidebar */
+.sidebar { width: 250px; background: #000; border-right: 2px solid #333; transition: width 0.3s; display: flex; flex-direction: column; }
+.sidebar.collapsed { width: 50px; }
 .sidebar.collapsed .nav-links { display: none; }
 
-.outcrab-label {
-    padding: 15px; background: var(--violet); color: white; font-weight: bold;
-    cursor: pointer; text-align: center; border-bottom: 2px solid #333;
-}
-.outcrab-label:hover { background: #5c005c; }
+/* The MOULTLOOK Toggle Button */
+.moultlook-label { padding: 15px; background: var(--violet); color: white; font-weight: bold; cursor: pointer; text-align: center; border-bottom: 2px solid #333; min-height: 20px;}
+.moultlook-label:hover { background: #5c005c; }
+.label-vert { display: none; line-height: 1.1; font-size: 14px; margin-top: 5px; }
+.sidebar.collapsed .label-full { display: none; }
+.sidebar.collapsed .label-vert { display: block; }
 
 .nav-links { padding: 10px; overflow-y: auto; }
 .nav-item { padding: 12px 10px; cursor: pointer; border-bottom: 1px solid #222; }
 .nav-item:hover { background: #222; color: var(--duckblue); }
 
-.nav-sub { padding-left: 20px; font-size: 0.9em; margin-bottom: 10px; }
-.nav-sub div { padding: 8px 0; cursor: pointer; color: #aaa; }
-.nav-sub div:hover { color: #fff; }
+/* The "Active" Highlight */
+.nav-item.active, .nav-sub div.active { background: #333; color: var(--duckblue); border-left: 4px solid var(--duckblue); }
 
+.nav-sub { padding-left: 20px; font-size: 0.9em; margin-bottom: 10px; }
+.nav-sub div { padding: 8px 0; cursor: pointer; color: #aaa; border-left: 4px solid transparent; }
+.nav-sub div:hover { color: #fff; }
 .moult { color: #ff5555; margin-top: 20px; border-top: 1px dashed #ff5555; }
 .moult:hover { background: #ff5555; color: black; }
 
-/* 2. Middle Row (Email List) */
-.middle-row { 
-    width: 300px; 
-    border-right: 2px solid #333; 
-    background: #1a1a1a;
-    overflow-y: auto; 
-}
+/* Middle Row */
+.middle-row { width: 300px; border-right: 2px solid #333; background: #1a1a1a; overflow-y: auto; display: block; }
 .email-item:hover { background: #2a2a2a; }
 
-/* 3. Content View (Right Column) */
-.content-view { 
-    flex-grow: 1; 
-    padding: 40px; 
-    overflow-y: auto; 
-    background: #222;
-}
-
-/* Basic formatting for the inner content */
+/* Content View */
+.content-view { flex-grow: 1; padding: 40px; overflow-y: auto; background: #222; }
 .demiurge-profile { border: 1px dashed #555; padding: 20px; background: #111; }
 .email-header { background: #111; padding: 15px; border-left: 4px solid var(--duckblue); }
+.legal-box { border: 1px solid #555; padding: 20px; margin-top: 20px; background: #1a1a1a; }
 
-/* Section Themes (Changes background slightly based on section) */
-.theme-french .content-view { background-color: #3a000e; } /* Faint burgundy */
-.theme-inbox .content-view { background-color: #250025; } /* Faint violet */
+.theme-french .content-view { background-color: #3a000e; }
+.theme-inbox .content-view { background-color: #250025; }
