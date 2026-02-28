@@ -1,7 +1,6 @@
 let clickCount = 0;
 const breakBtn = document.getElementById('break-button');
 
-// 1. The Break Logic
 breakBtn.addEventListener('click', () => {
     clickCount++;
     if (clickCount < 6) {
@@ -12,11 +11,9 @@ breakBtn.addEventListener('click', () => {
     }
 });
 
-// 2. The Loading Screen
 function startLoading() {
     document.getElementById('screen-login').style.display = 'none';
     document.getElementById('screen-loading').style.display = 'flex';
-    
     setTimeout(() => {
         document.getElementById('screen-loading').style.display = 'none';
         document.getElementById('screen-app').style.display = 'block';
@@ -24,35 +21,56 @@ function startLoading() {
     }, 5000); 
 }
 
-// 3. Sidebar Toggle
 document.getElementById('sidebar-toggle').addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('collapsed');
 });
 
-// 4. App Logic
+// Clears highlights from sidebar
+function clearActiveNav() {
+    document.querySelectorAll('.nav-item, .nav-sub div').forEach(el => el.classList.remove('active'));
+}
+
 function initApp() {
     changeSection('drafts'); // Default landing
 }
 
-// Handles clicking "INBOX", "DRAFTS", etc.
+// Handles clicking INBOX, DRAFTS, SHELL, etc.
 function changeSection(section) {
+    clearActiveNav();
+    const navElement = document.getElementById(`nav-${section}`);
+    if (navElement) navElement.classList.add('active'); // Highlight where we are
+
     document.body.className = `theme-${section}`;
     
+    const middleRow = document.getElementById('email-list');
+    const viewContainer = document.getElementById('content-view');
+
+    // POINT 11: "YOUR SHELL" logic (No middle row)
+    if (section === 'shell') {
+        middleRow.style.display = 'none';
+        viewContainer.innerHTML = shellContent; // We will define this in data.js
+        return;
+    }
+
+    // Normal sections
+    middleRow.style.display = 'block';
     const filteredEmails = emails.filter(email => email.section === section);
     renderEmailList(filteredEmails);
-    
-    document.getElementById('content-view').innerHTML = `<p style="opacity: 0.5;">Select an item to view...</p>`;
+    viewContainer.innerHTML = `<p style="opacity: 0.5;">Select an item to view...</p>`;
 }
 
-// Handles clicking "Capitalism", "Patriarchy", etc. under Inbox
 function filterCategory(category) {
+    clearActiveNav();
+    const navElement = document.getElementById(`nav-${category}`);
+    if (navElement) navElement.classList.add('active');
+
     document.body.className = `theme-inbox`;
+    const middleRow = document.getElementById('email-list');
+    middleRow.style.display = 'block';
     
-    // 1. Filter and show emails in the middle row
     const filteredEmails = emails.filter(email => email.category === category && email.section === 'inbox');
     renderEmailList(filteredEmails);
     
-    // 2. Show the Demiurge Profile in the main view
     const demiurge = demiurges[category];
     const viewContainer = document.getElementById('content-view');
     
@@ -68,20 +86,37 @@ function filterCategory(category) {
     }
 }
 
-// Renders the middle row
+// POINT 7: UNREAD Logic
+function viewUnread() {
+    clearActiveNav();
+    const navElement = document.getElementById('nav-unread');
+    if (navElement) navElement.classList.add('active');
+    
+    document.body.className = `theme-inbox`;
+    const middleRow = document.getElementById('email-list');
+    middleRow.style.display = 'block';
+
+    // Math magic to find the absolute newest date in the array
+    const newestEmail = emails.reduce((latest, current) => {
+        return new Date(latest.date) > new Date(current.date) ? latest : current;
+    });
+
+    renderEmailList([newestEmail]);
+    viewEmail(newestEmail.id);
+}
+
 function renderEmailList(emailArray) {
     const listContainer = document.getElementById('email-list');
-    listContainer.innerHTML = ''; // Clear current list
+    listContainer.innerHTML = ''; 
     
     if (emailArray.length === 0) {
-        listContainer.innerHTML = `<div style="padding:10px; opacity:0.5;">No messages found.</div>`;
+        listContainer.innerHTML = `<div style="padding:10px; opacity:0.5;">Folder empty.</div>`;
         return;
     }
 
     emailArray.forEach(email => {
         const item = document.createElement('div');
         item.className = 'email-item';
-        // Basic styling applied directly via JS for now so you can see the boxes
         item.style.padding = "10px";
         item.style.borderBottom = "1px solid #555";
         item.style.cursor = "pointer";
@@ -96,7 +131,6 @@ function renderEmailList(emailArray) {
     });
 }
 
-// Handles clicking a specific email in the middle row
 function viewEmail(id) {
     const email = emails.find(e => e.id === id);
     const viewContainer = document.getElementById('content-view');
