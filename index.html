@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>howtobecomeacrab.com</title>
+    <title>MOULTLOOK.COM</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="theme-default">
@@ -11,7 +11,7 @@
     <section id="screen-login" class="screen">
         <div class="login-content">
             <img src="your-cool-crab.gif" alt="Crab" class="login-gif">
-            <h1>howtobecomeacrab.com</h1>
+            <h1>MOULTLOOK.COM</h1>
             <p>Informations, memes, and chitinous thoughts.</p>
             
             <button id="break-button">CHECK MY CRABS</button>
@@ -36,29 +36,31 @@
         </div>
 
         <div class="app-layout">
-            <aside id="sidebar" class="sidebar collapsed">
-                <div id="sidebar-toggle" class="outcrab-label">OUTCRAB</div>
+            <aside id="sidebar" class="sidebar">
+                <div id="sidebar-toggle" class="moultlook-label">
+                    <span class="label-full">MOULTLOOK</span>
+                    <span class="label-vert">M<br>O<br>U<br>L<br>T<br>L<br>O<br>O<br>K</span>
+                </div>
                 <nav class="nav-links">
-                    <div class="nav-item" onclick="changeSection('french')">🇫🇷 FRENCH NEWS</div>
-                    <div class="nav-item" onclick="changeSection('inbox')">📥 INBOX</div>
+                    <div class="nav-item" id="nav-unread" onclick="viewUnread()">🆕 UNREAD</div>
+                    <div class="nav-item" id="nav-french" onclick="changeSection('french')">🇫🇷 FRENCH NEWS</div>
+                    <div class="nav-item" id="nav-inbox" onclick="changeSection('inbox')">📥 INBOX</div>
                     <div class="nav-sub">
-                        <div onclick="filterCategory('patriarchy')">↳ Patriarchy</div>
-                        <div onclick="filterCategory('imperialism')">↳ Imperialism</div>
-                        <div onclick="filterCategory('capitalism')">↳ Capitalism</div>
-                        <div onclick="filterCategory('notes')">↳ Notes to self</div>
+                        <div id="nav-patriarchy" onclick="filterCategory('patriarchy')">↳ Patriarchy</div>
+                        <div id="nav-imperialism" onclick="filterCategory('imperialism')">↳ Imperialism</div>
+                        <div id="nav-capitalism" onclick="filterCategory('capitalism')">↳ Capitalism</div>
+                        <div id="nav-notes" onclick="filterCategory('notes')">↳ Notes to self</div>
                     </div>
-                    <div class="nav-item" onclick="changeSection('sent')">📤 SENT</div>
-                    <div class="nav-item" onclick="changeSection('drafts')">📝 DRAFTS</div>
-                    <div class="nav-item" onclick="changeSection('shell')">🐚 YOUR SHELL</div>
+                    <div class="nav-item" id="nav-sent" onclick="changeSection('sent')">📤 SENT</div>
+                    <div class="nav-item" id="nav-drafts" onclick="changeSection('drafts')">📝 DRAFTS</div>
+                    <div class="nav-item" id="nav-shell" onclick="changeSection('shell')">🐚 YOUR SHELL</div>
                     <div class="nav-item moult" onclick="moult()">🧪 MOULT</div>
                 </nav>
             </aside>
 
-            <section class="middle-row" id="email-list">
-                </section>
+            <section class="middle-row" id="email-list"></section>
 
-            <main class="content-view" id="content-view">
-                </main>
+            <main class="content-view" id="content-view"></main>
         </div>
     </section>
 
