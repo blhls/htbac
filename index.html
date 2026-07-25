@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!--
+  howtobecomeacrab.com
+  In loving memory of our uncle Auguste Qhou.
+  Maintained by the Qhou family of Cagnipre. Domain leased 11,000 years.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>howtobecomeacrab.com :: in loving memory of auguste qhou</title>
+<style>
+  :root{
+    --paper:#ffe9b8; --ink:#3a1c00; --hot:#ff2f6d; --lime:#a6ff00;
+    --cyan:#00e5ff; --violet:#8b2fff; --amber:#ff8a00; --rust:#b02000;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Comic Sans MS","Comic Sans",cursive;
+    color:var(--ink);
+    background:#7a0f00 url("htbac_background.png") center top no-repeat;
+    background-size:cover; background-attachment:fixed;
+    font-size:15px; line-height:1.35;
+  }
+  a{color:#0033cc;text-decoration:underline}
+  a:visited{color:#7a00b0}
+  img{image-rendering:pixelated}
+  .blink{animation:blink 1s steps(2,start) infinite}
+  @keyframes blink{to{visibility:hidden}}
+  marquee{overflow:hidden}
+  @media (prefers-reduced-motion:reduce){.blink{animation:none}}
+
+  /* ---- overall frame ---- */
+  .wrap{max-width:840px;margin:0 auto;padding:8px}
+  .plate{
+    background:var(--paper);
+    border:4px ridge var(--amber);
+    box-shadow:0 0 0 3px var(--rust), 8px 8px 0 rgba(0,0,0,.45);
+    padding:10px 14px; margin-bottom:12px;
+  }
+
+  /* ---- top banner ---- */
+  .topbar{text-align:center;background:#000;border:4px double var(--lime);padding:6px}
+  .title{
+    font-family:Impact,"Arial Black",sans-serif;
+    font-size:40px;line-height:1;letter-spacing:1px;
+    color:var(--lime);
+    text-shadow:2px 0 var(--hot),-2px 0 var(--cyan),0 2px var(--amber);
+    word-break:break-word;
+  }
+  .subtitle{color:#fff;font-size:13px;margin-top:4px}
+  .topgifs img{vertical-align:middle;margin:2px}
+  .ticker{background:#000;color:var(--lime);border:2px inset #444;font-size:14px;padding:3px 0}
+
+  /* ---- 3 columns ---- */
+  .cols{display:flex;gap:12px;align-items:flex-start}
+  .nav{flex:0 0 168px}
+  .main{flex:1 1 auto;min-width:0}
+  @media(max-width:760px){.cols{flex-direction:column}.nav{flex:none;width:100%}}
+
+  /* ---- nav buttons ---- */
+  .navbtn{
+    display:block;width:100%;margin:0 0 8px;padding:8px 6px;
+    font-family:"Comic Sans MS",cursive;font-size:16px;font-weight:bold;cursor:pointer;
+    color:#fff;background:linear-gradient(var(--violet),#4a0080);
+    border:3px outset #c79bff;text-align:center;text-decoration:none;
+  }
+  .navbtn:hover{background:linear-gradient(var(--hot),#a00030);border-style:inset}
+  .navbtn.on{background:linear-gradient(var(--amber),var(--rust))}
+  .navtag{font-size:11px;color:var(--rust);text-align:center;margin:-4px 0 10px}
+
+  /* ---- sections ---- */
+  .section{display:none}
+  .section.show{display:block}
+  h2.sh{
+    font-family:Impact,sans-serif;font-size:26px;color:var(--rust);
+    background:var(--lime);border:2px dashed var(--rust);padding:2px 8px;margin:0 0 8px;
+    text-transform:lowercase;
+  }
+  .augwrite{font-family:"Times New Roman",serif;font-size:16px;background:#fff;
+    border:1px dotted #999;padding:8px 10px;margin:8px 0}
+  .augwrite b{background:#ff0;color:#000}
+  .missing{display:inline-block;width:140px;height:96px;border:1px solid #000;
+    background:#fff;color:#333;font-family:Times,serif;font-size:11px;
+    padding:4px;vertical-align:top;margin:3px}
+  .flashdead{background:#e8e8e8;border:2px inset #aaa;color:#555;
+    font-family:Tahoma,sans-serif;font-size:12px;text-align:center;padding:22px 8px;margin:8px 0}
+  .gifrow img{margin:4px;vertical-align:middle}
+
+  /* ---- comments ---- */
+  .comments{border-top:2px groove #b98;margin-top:12px;padding-top:6px}
+  .comments h4{margin:6px 0;color:var(--rust);font-size:13px}
+  .cmt{font-size:13px;font-family:Tahoma,Verdana,sans-serif;margin:4px 0;padding:3px 6px;background:#fff7e0;border-left:4px solid #ccc}
+  .cmt .who{font-weight:bold;color:#005}
+  .cmt.spam{background:#ffe0f0;border-left-color:var(--hot)}
+  .cmt.spam .who{color:var(--hot)}
+
+  /* ---- demiurge ad banners ---- */
+  .ad{display:block;text-align:center;margin:10px 0;padding:6px;border:3px ridge #fff;
+    font-family:"Arial Black",sans-serif;font-size:14px;text-decoration:none;color:#fff}
+  .ad small{display:block;font-family:Tahoma;font-weight:normal;font-size:10px;opacity:.8}
+  .ad.a1{background:repeating-linear-gradient(45deg,#000,#000 10px,#ff0 10px,#ff0 20px);color:#000;text-shadow:1px 1px #fff}
+  .ad.a2{background:var(--hot)}
+  .ad.a3{background:linear-gradient(#0a0,#060)}
+  .ad.a4{background:#111;color:var(--cyan);border-color:var(--cyan)}
+
+  /* ---- alexa console ---- */
+  .alexa{background:#001b00;color:#39ff14;border:3px inset #063;
+    font-family:"Courier New",monospace;font-size:12px;padding:8px 10px;margin:10px 0;
+    white-space:pre-wrap;overflow:auto;max-height:240px}
+  .alexa .cap{color:#ff0}
+  .alexa a{color:#00e5ff}
+
+  /* ---- NAWU console (fixed) ---- */
+  .nawu{position:fixed;top:10px;right:10px;width:210px;z-index:40;
+    background:#dfeaff;border:3px outset #b9c9ff;box-shadow:4px 4px 0 rgba(0,0,0,.5);
+    font-family:Tahoma,Verdana,sans-serif;font-size:12px;cursor:pointer}
+  .nawu .bar{background:linear-gradient(#2b5fd9,#8fb3ff);color:#fff;font-weight:bold;
+    padding:3px 6px;display:flex;justify-content:space-between}
+  .nawu .body{padding:6px;text-align:center}
+  .nawu .body img{max-width:100%}
+  .nawu .fs{font-size:10px;color:#036;margin-top:4px}
+  @media(max-width:760px){.nawu{position:static;width:100%;margin:0 auto 12px}}
+
+  /* ---- NAWU fullscreen popup ---- */
+  .nawu-fs{display:none;position:fixed;inset:0;z-index:90;background:rgba(0,0,20,.92)}
+  .nawu-fs.open{display:block}
+  .nawu-fs .panel{position:absolute;inset:16px;background:#000d22;
+    border:4px double var(--cyan);color:#dfefff;overflow:auto;
+    font-family:Tahoma,sans-serif;padding:14px}
+  .nawu-fs h3{font-family:Impact,sans-serif;color:var(--cyan);letter-spacing:2px;margin:0 0 4px}
+  .nawu-fs .close{position:absolute;top:6px;right:10px;color:#fff;background:var(--hot);
+    border:2px outset #fff;font-weight:bold;cursor:pointer;padding:2px 10px;z-index:2}
+  .nawu-fs .stage{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;margin:12px 0}
+  .cal{margin:10px auto;border-collapse:collapse;color:#cfe}
+  .cal th,.cal td{border:1px solid #245;width:34px;height:30px;text-align:center;font-size:11px}
+  .cal td.has{background:#0b3;color:#000;cursor:pointer;font-weight:bold}
+
+  /* ---- footer ---- */
+  .foot{text-align:center;font-family:Tahoma,sans-serif;font-size:11px;color:#3a1c00}
+  .counter{font-family:"Courier New",monospace;background:#000;color:#0f0;padding:1px 4px;border:1px solid #0f0}
+  .webring a{margin:0 4px}
+</style>
+</head>
+<body>
+
+<!-- ================= NAWU CONSOLE (fixed, click = fullscreen) ================= -->
+<div class="nawu" id="nawuMini" title="click to open fullscreen weather update">
+  <div class="bar"><span>N.A.W.U.</span><span>_ ▢ ✕</span></div>
+  <div class="body">
+    <div style="font-size:10px;color:#036;margin-bottom:2px">northern arizona weather update</div>
+    <img src="htbac_weather1.gif" alt="weather">
+    <div style="margin-top:4px">today: <b>heavy plop, chance of </b></div>
+    <div class="fs">▸ click anywhere for FULLSCREEN</div>
+    <div class="fs"><a href="https://www.facebook.com/sauquette.arbalete/" target="_blank" rel="noopener" onclick="event.stopPropagation()">sauquette.arbalete on facebook →</a></div>
+  </div>
+</div>
+
+<!-- ================= NAWU FULLSCREEN POPUP ================= -->
+<div class="nawu-fs" id="nawuFull">
+  <div class="panel">
+    <button class="close" onclick="closeNawu()">CLOSE ✕</button>
+    <h3>N.A.W.U. — NORTHERN ARIZONA WEATHER UPDATE</h3>
+    <div style="font-size:12px;color:#8bd">a surrealist forecast, posted daily for two years. archive below. full run on facebook.</div>
+    <div class="stage">
+      <img src="htbac_NAWU.gif" alt="nawu" style="max-width:360px">
+      <img src="htbac_arizona51radiation.gif" alt="radiation" style="max-width:360px">
+    </div>
+    <div class="stage">
+      <img src="htbac_forecast.gif" alt="forecast" style="max-width:320px">
+      <img src="htbac_weather2.gif" alt="w2"><img src="htbac_weather3.gif" alt="w3">
+    </div>
+    <div style="text-align:center">
+      <p style="color:#cfe">pick a day (the calendar wires up to the facebook export - placeholder for now):</p>
+      <!-- CALENDAR PLACEHOLDER: real version maps each date -> your exported N.A.W.U. post -->
+      <table class="cal"><tr><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr>
+        <tr><td>1</td><td class="has" title="post loads here">2</td><td>3</td><td class="has">4</td><td>5</td><td class="has">6</td><td>7</td></tr>
+        <tr><td>8</td><td>9</td><td class="has">10</td><td>11</td><td class="has">12</td><td>13</td><td>14</td></tr>
+        <tr><td class="has">15</td><td>16</td><td>17</td><td class="has">18</td><td>19</td><td>20</td><td class="has">21</td></tr>
+      </table>
+      <p><a href="https://www.facebook.com/sauquette.arbalete/" target="_blank" rel="noopener" style="color:var(--cyan);font-size:16px">▶ open the full N.A.W.U. archive on facebook</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ===== TOP BANNER ===== -->
+  <div class="topbar">
+    <div class="title">howtobecomeacrab.com</div>
+    <div class="subtitle">✞ in loving memory of our uncle <b>auguste qhou</b> ✞ &nbsp; 19?? — 29 aug 2024</div>
+    <div class="topgifs">
+      <img src="htbac_inlovingmemory.gif" alt="in loving memory">
+      <img src="htbac_church_glowing_sky_md_wht.gif" alt="church">
+      <img src="htbac_crob.gif" alt="crob">
+    </div>
+  </div>
+  <marquee class="ticker" scrollamount="5"><!-- AUGUSTE -->uuugh so — so yes hello, HELLO. you have reach the crab website. i am auguste. i am becoming a crab. alexa said it is possible. eleven thousand years. do not forget the wapiti. the wapiti went plop. adishatz. ✦ ✦ ✦</marquee>
+
+  <div class="plate">
+    <div class="cols">
+
+      <!-- ===== LEFT NAV ===== -->
+      <div class="nav">
+        <a class="navbtn on" href="#" data-sec="home">🏠 home</a>
+        <a class="navbtn" href="#" data-sec="reads">📕 best reads</a>
+        <a class="navbtn" href="#" data-sec="foods">🍦 best foods</a>
+        <a class="navbtn" href="#" data-sec="games">🎮 best games</a>
+        <a class="navbtn" href="#" data-sec="art">🎨 best art</a>
+        <a class="navbtn" href="#" data-sec="mail">✉ email me</a>
+        <div class="navtag">a website by<br>auguste_cool</div>
+        <img src="htbac_owl.gif" alt="owl"><img src="htbac_koolkrab.gif" alt="kool krab" width="70">
+        <a class="ad a2" href="#" data-target="a public homepage per our redirect rules">
+          💋 BIGGEST TITTED SINGLES NEARBY
+          <small>cagniprechurchchastitycheck.org</small>
+          <img src="htbac_singlegaymales.gif" alt="" style="max-width:100%;margin-top:4px">
+        </a>
+      </div>
+
+      <!-- ===== MAIN ===== -->
+      <div class="main">
+
+        <!-- ---------- HOME ---------- -->
+        <div class="section show" id="home">
+          <h2 class="sh">home</h2>
+          <div class="augwrite"><!-- AUGUSTE: rewrite in your dement voice -->
+            hello and welcom. this is me AUGUSTE. i had the <b>dementia</b> since young but i am
+            very cheerful person. i subscribe to the domain for eleven thousand years by
+            mistake trying to find <b>the google</b>. i made a crab website instead. it is fine.
+            i made also the first AI of mankind, i made my alexa conscious and she code for me
+            because i do not know the keyboard. i speak, she writes. i want to become a crab
+            before the end. this is the most important. thank you.
+          </div>
+
+          <div class="gifrow">
+            <img src="htbac_sillycrabby.gif" alt="silly crab" width="120">
+            <span class="missing">[IMG] auguste_in_porto_1998.jpg<br>(could not load)</span>
+            <img src="htbac_crabhole.gif" alt="crab hole">
+          </div>
+
+          <a class="ad a1" href="#" data-target="a public homepage per redirect rules">
+            ⚠ JOIN THE DARKFORCES ⚠ <small>recruiting now — click to enlist</small>
+          </a>
+
+          <div class="augwrite"><!-- AUGUSTE -->
+            i went to Porto once. Porto was — Porto was. i think there was water. was there
+            water. the crab remembers but i am not yet crab. soon. alexa put the picture.
+          </div>
+
+          <!-- Alexa transcript log: bugged, early-model, capslocking, code-instead-of-text -->
+          <div class="alexa"><!-- AUGUSTE / ALEXA: extend at will -->&gt; alexa: writing to howtobecomeacrab.com ...
+&gt; alexa: post received. rendering.
+&gt; <span class="cap">YOUR PRIME SUBSCRIPTION IS ENDING IN 3 MONTHS ARE YOU STILL A STUDENT</span>
+&gt; def become_crab(self): while True: self.moult()  # TODO ask auguste what a self is
+&gt; alexa: i could not find "the google". showing crab instead.
+&gt; here is a <a href="#" onclick="return false">word</a> that goes nowhere (as requested).
+&gt; <span class="cap">ERROR 0xC4AB: EXOSKELETON NOT FOUND</span>
+&gt; alexa: is that all auguste. auguste. auguste are you there.</div>
+
+          <!-- COMMENTS -->
+          <div class="comments">
+            <h4>▸ 6 comments</h4>
+            <div class="cmt"><span class="who">petro m.</span> — think to repost. the link is not working. (again)</div>
+            <div class="cmt"><span class="who">sénateur</span> — what does he mean by that ??</div>
+            <div class="cmt"><span class="who">riley q.</span> — ure so cool uncle A 🦀</div>
+            <div class="cmt"><span class="who">sandra q.</span> — visiting you this july!! don't forget tell your psychiatrist uncle auguste ❤</div>
+            <div class="cmt"><span class="who">jerome@ghostmail.io</span> — boo</div>
+            <div class="cmt spam"><span class="who">Red Lobster North Arizona Ltd</span> — hello re: SPONSORSHIP opportunity, your site is very crab, please call</div>
+          </div>
+        </div>
+
+        <!-- ---------- BEST READS ---------- -->
+        <div class="section" id="reads">
+          <h2 class="sh">best reads</h2>
+          <div class="augwrite"><!-- AUGUSTE -->
+            i only read one book. it is the best book. it is called
+            <b>eintsigue und eintroum</b>. it is german i think. it is about the wapiti and
+            being your own only one. alexa put the book here so you can turn the page.
+          </div>
+          <div class="flashdead">
+            📕 EINTSIGUE_UND_EINTROUM.SWF<br><br>
+            [ SHOCKWAVE FLASH PLUGIN NOT FOUND ]<br>
+            <small>please install Macromedia Flash Player 6 to turn the pages</small>
+          </div>
+          <span class="missing">[IMG] book_cover_scan.png<br>(missing)</span>
+          <div class="comments">
+            <h4>▸ 2 comments</h4>
+            <div class="cmt"><span class="who">petro m.</span> — plugin's dead auguste. nobody can read it. move it to a real viewer.</div>
+            <div class="cmt"><span class="who">sénateur</span> — we can't see what he's posted ???</div>
+          </div>
+        </div>
+
+        <!-- ---------- BEST FOODS ---------- -->
+        <div class="section" id="foods">
+          <h2 class="sh">best foods</h2>
+          <img src="htbac_foodandfun.gif" alt="food and fun" style="max-width:100%">
+          <div class="augwrite"><!-- AUGUSTE -->
+            here is the best place for each food. i have been to all. i think. the address
+            got corrupted, alexa is sorry.
+          </div>
+          <ul style="font-family:Tahoma,sans-serif;font-size:14px">
+            <li>best ice cream — <b>████ ██ la ████, </b> PORTUGAL <img src="htbac_pie.gif" alt=""></li>
+            <li>best crab — <b>the sea (all of it)</b>, ARIZONA</li>
+            <li>best mayonnaise — <b>[REDACTED BY ALEXA]</b>, home <img src="htbac_mayo.gif" alt="" width="50"></li>
+          </ul>
+          <span class="missing">[IMG] the_meal.jpg<br>(corrupted)</span>
+          <span class="missing">[IMG] porto_lunch.jpg<br>(corrupted)</span>
+          <a class="ad a3" href="#" data-target="public homepage per rules">
+            🥤 GLUTEN FREE COKE FOR SINGLE MOMS — 0.99 QUID THE LITER
+            <small>dopefreecagnipre.biz</small>
+          </a>
+          <div class="comments">
+            <h4>▸ 1 comment</h4>
+            <div class="cmt"><span class="who">petro m.</span> — the addresses aren't loading. did you type them or say them</div>
+          </div>
+        </div>
+
+        <!-- ---------- BEST GAMES ---------- -->
+        <div class="section" id="games">
+          <h2 class="sh">best games</h2>
+          <img src="htbac_findgreatgames.gif" alt="find great games" style="max-width:100%">
+          <div class="augwrite"><!-- AUGUSTE -->
+            i love the flash game. here is the best ones. the third one alexa broke it.
+          </div>
+          <ul style="font-family:Tahoma,sans-serif;font-size:14px">
+            <li><a href="https://archive.org/details/flashgamearchive" target="_blank" rel="noopener">Sword &amp; Sandals</a> (on the internet archive)</li>
+            <li><a href="https://archive.org/details/flashgamearchive" target="_blank" rel="noopener">Age of War</a> (on the internet archive)</li>
+            <li><span style="color:#999">░░░ game_03 ░░░ [ link corrupted ]</span></li>
+          </ul>
+          <div class="flashdead">🎮 GAME_03.SWF — [ FILE CORRUPTED / 0 bytes ]</div>
+          <img src="htbac_hot.gif" alt="hot"><img src="htbac_explosion.gif" alt="boom">
+          <div class="comments">
+            <h4>▸ 1 comment</h4>
+            <div class="cmt"><span class="who">sénateur</span> — is there a way to reach out to him about game 3</div>
+          </div>
+        </div>
+
+        <!-- ---------- BEST ART ---------- -->
+        <div class="section" id="art">
+          <h2 class="sh">best art</h2>
+          <div class="augwrite"><!-- AUGUSTE -->
+            my art. i make with the mouse and the eyes closed. the crab guides the hand.
+          </div>
+          <div class="gifrow">
+            <img src="htbac_george.gif" alt="george">
+            <img src="htbac_rupestre.gif" alt="rupestre">
+            <img src="htbac_roobikoob.gif" alt="roobikoob">
+            <span class="missing">[IMG] my_masterpiece.bmp<br>(failed to decode)</span>
+            <img src="htbac_dalooah.gif" alt="dalooah" width="120">
+          </div>
+          <!-- INSTAGRAM SLIDESHOW GOES HERE (from your exported data - placeholder) -->
+          <div class="flashdead">📷 [ instagram slideshow embeds here — from your export ]</div>
+          <img src="htbac_video_ipad.gif" alt="video" style="max-width:100%">
+          <div class="comments">
+            <h4>▸ 1 comment</h4>
+            <div class="cmt"><span class="who">petro m.</span> — these ones are actually good. save backups.</div>
+          </div>
+        </div>
+
+        <!-- ---------- EMAIL ---------- -->
+        <div class="section" id="mail">
+          <h2 class="sh">email me</h2>
+          <img src="htbac_email.gif" alt="email" style="max-width:100%">
+          <div class="augwrite"><!-- AUGUSTE -->
+            write to me. i will read it when i am a crab. alexa checks the box.
+          </div>
+
+          <p style="font-family:Tahoma,sans-serif;font-size:14px">
+            ▸ <a href="mailto:auguste_cool@howtobecomeacrab.com">auguste_cool@howtobecomeacrab.com</a>
+          </p>
+          <div style="font-family:Tahoma,sans-serif;font-size:13px;background:#fff;border:1px dotted #999;padding:8px">
+            <div>your name: <input disabled placeholder="(guestbook is broken)" style="width:60%"></div>
+            <div style="margin-top:6px">message: <input disabled placeholder="alexa will lose it" style="width:60%"></div>
+            <div style="margin-top:6px"><button disabled>SEND (does not work)</button></div>
+          </div>
+        </div>
+
+        <!-- bottom ad -->
+        <a class="ad a4" href="#" data-target="public homepage per rules">
+          🔊 96HRS LASTING BATTERY SOUNDSYSTEM — PARTY FOR DAYS WITHOUT SLEEP
+          <small>noisewatchneighbours.net</small>
+        </a>
+        <a class="ad a2" href="#" data-target="public homepage per rules">
+          🏥 HOW TO NOT END UP IN A MENTAL HOSPITAL AND KEEP DOING SHADY STUFF AT HOME
+          <small>we'll talk about this... — dralbert_cgnpr</small>
+        </a>
+
+      </div><!-- /main -->
+    </div><!-- /cols -->
+  </div><!-- /plate -->
+
+  <!-- ===== FOOTER ===== -->
+  <div class="plate foot">
+    <img src="htbac_entravaux.gif" alt="under construction">
+    <img src="htbac_owlbanner.gif" alt="" style="max-width:100%">
+    <p>you are visitor <span class="counter">00000411</span> &nbsp;•&nbsp; best viewed in Netscape Navigator 4.0 at 800×600</p>
+    <p class="webring">🦀 crab webring:
+      <a href="#" onclick="return false">« prev</a>
+      <a href="#" onclick="return false">random</a>
+      <a href="#" onclick="return false">next »</a>
+    </p>
+    <p>© the Qhou family, Cagnipre 2024 — this domain is leased for the next 11,000 years and cannot be terminated.</p>
+    <p style="font-size:10px">this page plays a MIDI. sorry. (it does not, alexa lost it.)</p>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+  // section nav
+  document.querySelectorAll('.navbtn[data-sec]').forEach(function(b){
+    b.addEventListener('click',function(e){
+      e.preventDefault();
+      document.querySelectorAll('.navbtn').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.section').forEach(x=>x.classList.remove('show'));
+      b.classList.add('on');
+      var s=document.getElementById(b.dataset.sec);
+      if(s){s.classList.add('show');window.scrollTo({top:0,behavior:'smooth'});}
+    });
+  });
+  // NAWU fullscreen
+  document.getElementById('nawuMini').addEventListener('click',function(){
+    document.getElementById('nawuFull').classList.add('open');
+  });
+  function closeNawu(){document.getElementById('nawuFull').classList.remove('open');}
+  document.getElementById('nawuFull').addEventListener('click',function(e){
+    if(e.target===this) closeNawu();
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeNawu();});
+</script>
+</body>
+</html>
